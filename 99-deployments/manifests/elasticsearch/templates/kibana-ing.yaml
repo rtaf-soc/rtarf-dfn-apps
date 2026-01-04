@@ -8,7 +8,7 @@ metadata:
 spec:
   tls:
     - hosts:
-      - {{ .Values.domain2 }}
+      - {{ .Values.domain }}
       #secretName: kibana-soc-cert-legacy
   rules:
     - host: {{ .Values.domain }}
