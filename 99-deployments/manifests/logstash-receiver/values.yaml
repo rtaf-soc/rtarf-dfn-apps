@@ -70,7 +70,7 @@ logstash-beat-receiver:
         kafka {
           bootstrap_servers => "kafka.kafka.svc.cluster.local:9092"
           codec => json
-          topic_id => "receiver-topic-beat"
+          topic_id => "received-topic-beat"
         }
       }
 
