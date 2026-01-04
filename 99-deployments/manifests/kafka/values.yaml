@@ -24,3 +24,6 @@ kafka:
   persistence:
     enabled: true
     size: 10Gi
+
+  image:
+    repository: bitnamilegacy/kafka
