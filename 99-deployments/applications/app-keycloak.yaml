@@ -14,7 +14,7 @@ spec:
     spec:
       project: "default"
       source:
-        repoURL: https://github.com/wintech-thai/otep-dc-k3s.git
+        repoURL: https://github.com/rtaf-soc/rtarf-dfn-apps.git
         targetRevision: "{{name}}" #Based on environment
         path: '99-deployments/manifests/keycloak'
         helm:
