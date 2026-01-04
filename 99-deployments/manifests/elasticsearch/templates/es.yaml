@@ -4,7 +4,7 @@ kind: Elasticsearch
 metadata:
   name: es-censor
 spec:
-  #version: 8.13.4
+  version: 8.18.8
   nodeSets:
   - name: masters
     count: 3
@@ -146,16 +146,16 @@ spec:
         resources:
           requests:
             storage: 200Gi
-  #auth:
-  #  fileRealm:
-  #  - secretName: es-ads-basic-authen
+  auth:
+    fileRealm:
+    - secretName: es-basic-authen
 ---
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
   name: es-censor
 spec:
-  #version: 8.13.4
+  version: 8.18.8
   count: 1
   elasticsearchRef:
     name: es-censor
