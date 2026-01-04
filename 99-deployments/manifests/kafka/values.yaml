@@ -2,6 +2,8 @@
 kafka:
   enabled: true
   fullnameOverride: kafka
+  autoCreateTopicsEnable: true
+
   kraft:
     enabled: true
 
