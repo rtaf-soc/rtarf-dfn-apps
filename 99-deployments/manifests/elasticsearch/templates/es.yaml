@@ -7,7 +7,7 @@ spec:
   version: 8.18.8
   nodeSets:
   - name: masters
-    count: 3
+    count: 1
     podTemplate:
       spec:
         initContainers:
@@ -58,11 +58,11 @@ spec:
             value: -Xms8g -Xmx8g
           resources:
             requests:
-              memory: 4Gi
-              cpu: 4
+              memory: 2Gi
+              cpu: 1
             limits:
-              memory: 12Gi
-              cpu: 8
+              memory: 4Gi
+              cpu: 2
     config:
       node.store.allow_mmap: true
       node.roles: ["data_warm", "ingest"]
@@ -74,7 +74,7 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 100Gi
+            storage: 200Gi
 
 
   - name: cold
@@ -94,11 +94,11 @@ spec:
             value: -Xms8g -Xmx8g
           resources:
             requests:
-              memory: 4Gi
-              cpu: 4
+              memory: 2Gi
+              cpu: 1
             limits:
-              memory: 12Gi
-              cpu: 8
+              memory: 4Gi
+              cpu: 2
     config:
       node.store.allow_mmap: true
       node.roles: ["data_cold", "ingest"]
@@ -110,10 +110,10 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 100Gi
+            storage: 300Gi
 
   - name: data
-    count: 3
+    count: 1
     podTemplate:
       spec:
         initContainers:
@@ -129,11 +129,11 @@ spec:
             value: -Xms8g -Xmx8g
           resources:
             requests:
-              memory: 4Gi
-              cpu: 4
+              memory: 2Gi
+              cpu: 1
             limits:
-              memory: 12Gi
-              cpu: 8
+              memory: 4Gi
+              cpu: 2
     config:
       node.store.allow_mmap: true
       node.roles: ["data", "ingest"]
