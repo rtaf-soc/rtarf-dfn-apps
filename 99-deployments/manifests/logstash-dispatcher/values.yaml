@@ -23,6 +23,18 @@ logstash-dispatcher-es:
     #  nodePort: 30144
 
   extraEnvs:
+    - name: ES_USER
+      valueFrom:
+        secretKeyRef:
+          name: es-basic-authen
+          key: username
+
+    - name: ES_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: es-basic-authen
+          key: password
+
     - name: LS_JAVA_OPTS
       value: "-Xmx256m -Xms256m"
 
@@ -73,9 +85,18 @@ logstash-dispatcher-es:
       output {
         #stdout { codec => json_lines }
 
-        kafka {
-          bootstrap_servers => "kafka.kafka.svc.cluster.local:9092"
-          codec => json
-          topic_id => "dispatched-topic-beat"
+        elasticsearch {
+          hosts => [ "https://es-censor-es-http.elasticsearch.svc.cluster.local:9200" ]
+          ssl_certificate_verification => false
+          user => "${ES_USER}"
+          password => "${ES_PASSWORD}"
+          action => "create"
+
+          ecs_compatibility => "v8"
+          http_compression => "true"
+
+          index => "censor-events-%{[cust_ts_yyyy]}%{[cust_ts_mm]}%{[cust_ts_dd]}-%{[cust_pod_name_beat]}"
+          template_overwrite => "true"
+          timeout => "0.5"
         }
       }
