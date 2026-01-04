@@ -1,3 +1,5 @@
+domain: loki-log.rtarf-censor.dev-hubs.com
+
 loki-stack:
   enabled: true
   test_pod:
