@@ -58,8 +58,10 @@ logstash-beat-receiver:
       }
 
       filter {
-          path => "/scripts/receiver-beat.rb"
-          script_params => {}
+          ruby {
+            path => "/scripts/receiver-beat.rb"
+            script_params => {}
+          }
       }
 
       output {
