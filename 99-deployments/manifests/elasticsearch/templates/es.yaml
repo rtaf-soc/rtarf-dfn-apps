@@ -15,7 +15,7 @@ spec:
           securityContext:
             privileged: true
             runAsUser: 0
-          #command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
+          command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
         containers:
         - name: elasticsearch
           #env:
@@ -50,7 +50,7 @@ spec:
           securityContext:
             privileged: true
             runAsUser: 0
-          #command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
+          command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
         containers:
         - name: elasticsearch
           #env:
@@ -86,7 +86,7 @@ spec:
           securityContext:
             privileged: true
             runAsUser: 0
-          #command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
+          command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
         containers:
         - name: elasticsearch
           #env:
@@ -121,7 +121,7 @@ spec:
           securityContext:
             privileged: true
             runAsUser: 0
-          #command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
+          command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
         containers:
         - name: elasticsearch
           #env:
