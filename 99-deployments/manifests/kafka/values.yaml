@@ -1,0 +1,26 @@
+
+kafka:
+  enabled: true
+  fullnameOverride: kafka
+  kraft:
+    enabled: true
+
+  zookeeper:
+    enabled: false
+
+  replicaCount: 3
+
+  controller:
+    replicaCount: 3
+
+  listeners:
+    client:
+      protocol: PLAINTEXT
+    interbroker:
+      protocol: PLAINTEXT
+    controller:
+      protocol: PLAINTEXT
+
+  persistence:
+    enabled: true
+    size: 10Gi
