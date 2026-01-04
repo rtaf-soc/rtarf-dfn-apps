@@ -15,18 +15,18 @@ spec:
           securityContext:
             privileged: true
             runAsUser: 0
-          command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
+          #command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
         containers:
         - name: elasticsearch
-          env:
-          - name: ES_JAVA_OPTS
-            value: -Xms8g -Xmx8g
+          #env:
+          #- name: ES_JAVA_OPTS
+          #  value: -Xms8g -Xmx8g
           resources:
             requests:
-              memory: 4Gi
-              cpu: 4
+              memory: 1Gi
+              cpu: 2
             limits:
-              memory: 10Gi
+              memory: 2Gi
     config:
       node.store.allow_mmap: true
       node.roles: ["master"]
@@ -50,18 +50,18 @@ spec:
           securityContext:
             privileged: true
             runAsUser: 0
-          command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
+          #command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
         containers:
         - name: elasticsearch
-          env:
-          - name: ES_JAVA_OPTS
-            value: -Xms8g -Xmx8g
+          #env:
+          #- name: ES_JAVA_OPTS
+          #  value: -Xms8g -Xmx8g
           resources:
             requests:
-              memory: 2Gi
+              memory: 1Gi
               cpu: 1
             limits:
-              memory: 4Gi
+              memory: 2Gi
               cpu: 2
     config:
       node.store.allow_mmap: true
@@ -86,18 +86,18 @@ spec:
           securityContext:
             privileged: true
             runAsUser: 0
-          command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
+          #command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
         containers:
         - name: elasticsearch
-          env:
-          - name: ES_JAVA_OPTS
-            value: -Xms8g -Xmx8g
+          #env:
+          #- name: ES_JAVA_OPTS
+          #  value: -Xms8g -Xmx8g
           resources:
             requests:
-              memory: 2Gi
+              memory: 1Gi
               cpu: 1
             limits:
-              memory: 4Gi
+              memory: 2Gi
               cpu: 2
     config:
       node.store.allow_mmap: true
@@ -121,18 +121,18 @@ spec:
           securityContext:
             privileged: true
             runAsUser: 0
-          command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
+          #command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
         containers:
         - name: elasticsearch
-          env:
-          - name: ES_JAVA_OPTS
-            value: -Xms8g -Xmx8g
+          #env:
+          #- name: ES_JAVA_OPTS
+          #  value: -Xms8g -Xmx8g
           resources:
             requests:
-              memory: 2Gi
+              memory: 1Gi
               cpu: 1
             limits:
-              memory: 4Gi
+              memory: 2Gi
               cpu: 2
     config:
       node.store.allow_mmap: true
