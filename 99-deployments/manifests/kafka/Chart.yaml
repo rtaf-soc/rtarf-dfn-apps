@@ -9,3 +9,9 @@ dependencies:
     version: "32.4.3"
     repository: "https://charts.bitnami.com/bitnami"
     condition: kafka.enabled
+
+  - name: "kafka-ui"
+    alias: kafka-ui
+    condition: kafka-ui.enabled
+    repository: "https://provectus.github.io/kafka-ui-charts"
+    version: "0.7.5"
