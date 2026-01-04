@@ -1,0 +1,163 @@
+---
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: es-censor
+spec:
+  #version: 8.13.4
+  nodeSets:
+  - name: masters
+    count: 3
+    podTemplate:
+      spec:
+        initContainers:
+        - name: sysctl
+          securityContext:
+            privileged: true
+            runAsUser: 0
+          command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
+        containers:
+        - name: elasticsearch
+          env:
+          - name: ES_JAVA_OPTS
+            value: -Xms8g -Xmx8g
+          resources:
+            requests:
+              memory: 4Gi
+              cpu: 4
+            limits:
+              memory: 10Gi
+    config:
+      node.store.allow_mmap: true
+      node.roles: ["master"]
+    volumeClaimTemplates:
+    - metadata:
+        name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 200Gi
+        #storageClassName: longhorn
+
+  - name: warm
+    count: 1
+    podTemplate:
+      spec:
+        initContainers:
+        - name: sysctl
+          securityContext:
+            privileged: true
+            runAsUser: 0
+          command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
+        containers:
+        - name: elasticsearch
+          env:
+          - name: ES_JAVA_OPTS
+            value: -Xms8g -Xmx8g
+          resources:
+            requests:
+              memory: 4Gi
+              cpu: 4
+            limits:
+              memory: 12Gi
+              cpu: 8
+    config:
+      node.store.allow_mmap: true
+      node.roles: ["data_warm", "ingest"]
+    volumeClaimTemplates:
+    - metadata:
+        name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 100Gi
+
+
+  - name: cold
+    count: 1
+    podTemplate:
+      spec:
+        initContainers:
+        - name: sysctl
+          securityContext:
+            privileged: true
+            runAsUser: 0
+          command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
+        containers:
+        - name: elasticsearch
+          env:
+          - name: ES_JAVA_OPTS
+            value: -Xms8g -Xmx8g
+          resources:
+            requests:
+              memory: 4Gi
+              cpu: 4
+            limits:
+              memory: 12Gi
+              cpu: 8
+    config:
+      node.store.allow_mmap: true
+      node.roles: ["data_cold", "ingest"]
+    volumeClaimTemplates:
+    - metadata:
+        name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 100Gi
+
+  - name: data
+    count: 3
+    podTemplate:
+      spec:
+        initContainers:
+        - name: sysctl
+          securityContext:
+            privileged: true
+            runAsUser: 0
+          command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
+        containers:
+        - name: elasticsearch
+          env:
+          - name: ES_JAVA_OPTS
+            value: -Xms8g -Xmx8g
+          resources:
+            requests:
+              memory: 4Gi
+              cpu: 4
+            limits:
+              memory: 12Gi
+              cpu: 8
+    config:
+      node.store.allow_mmap: true
+      node.roles: ["data", "ingest"]
+    volumeClaimTemplates:
+    - metadata:
+        name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 200Gi
+  #auth:
+  #  fileRealm:
+  #  - secretName: es-ads-basic-authen
+---
+apiVersion: kibana.k8s.elastic.co/v1
+kind: Kibana
+metadata:
+  name: es-censor
+spec:
+  #version: 8.13.4
+  count: 1
+  elasticsearchRef:
+    name: es-censor
+  config:
+    monitoring.ui.ccs.enabled: false
