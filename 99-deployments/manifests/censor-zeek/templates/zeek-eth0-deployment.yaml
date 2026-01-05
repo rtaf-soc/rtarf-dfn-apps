@@ -40,9 +40,9 @@ spec:
               mountPath: /usr/share/filebeat/filebeat.yml
               subPath: filebeat.yml
 
-            - name: filebeat-modules
-              mountPath: /usr/share/filebeat/modules.d
-              readOnly: true
+            #- name: filebeat-modules
+            #  mountPath: /usr/share/filebeat/modules.d
+            #  readOnly: true
 
         ##### Zeek #####
         - name: zeek
