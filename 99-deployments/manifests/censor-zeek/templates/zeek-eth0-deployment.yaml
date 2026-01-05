@@ -47,7 +47,7 @@ spec:
 
           volumeMounts:
             - name: zeek-logs
-              mountPath: /usr/local/zeek/logs
+              mountPath: {{ .Values.zeekEth0.logDir }}
 
             - name: config-volume
               mountPath: /etc/zeek/site/{{ .Values.zeekEth0.zeeConfigName }}
