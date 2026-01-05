@@ -17,4 +17,4 @@ data:
       permissions: 0644
 
     output.logstash:
-      hosts: ["{{ .Values.logstash.host }}:{{ .Values.logstash.port }}"]
+      hosts: ["{{ .Values.zeekEth0.logstash.host }}:{{ .Values.zeekEth0.logstash.port }}"]
