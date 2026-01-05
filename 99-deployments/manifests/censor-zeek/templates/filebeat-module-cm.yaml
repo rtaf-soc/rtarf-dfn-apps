@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: filebeat-modules
+data:
+  zeek.yml: |
+    - module: zeek
+      log:
+        enabled: true
+        var.paths:
+          - {{ .Values.zeekEth0.logDir }}/current/*.log

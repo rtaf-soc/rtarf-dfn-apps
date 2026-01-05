@@ -14,13 +14,6 @@ logstash-beat-receiver:
     limits:
       cpu: "1.5"
       memory: "2Gi"
-  service:
-    #type: NodePort
-    #ports:
-    #- port: 5044
-    #  #protocol: UDP
-    #  targetPort: 5044
-    #  nodePort: 30144
 
   extraEnvs:
     - name: LS_JAVA_OPTS
@@ -48,6 +41,15 @@ logstash-beat-receiver:
     - name: scripts
       configMap:
         name: receiver-beat-cm
+
+  service:
+    type: NodePort
+    ports:
+    - port: 5044
+      protocol: TCP
+      targetPort: 5044
+      nodePort: 30044
+      name: beat-tcp
 
   logstashPipeline:
     logstash.conf: |

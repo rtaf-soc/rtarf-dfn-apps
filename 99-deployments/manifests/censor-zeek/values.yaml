@@ -12,3 +12,8 @@ zeekEth0:
     limits:
       cpu: "1"
       memory: 2Gi
+
+  logstash:
+    host: logstash.example.com
+    port: 5044
+  
