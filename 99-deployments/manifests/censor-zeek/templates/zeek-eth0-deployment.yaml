@@ -32,13 +32,12 @@ spec:
           args:
             - |
               set -e
-              export ZEEK_LOG_DIR=/usr/local/zeek/logs/current
+              export ZEEK_LOG_DIR={{ .Values.zeekEth0.logDir }}/current
               mkdir -p $ZEEK_LOG_DIR
               echo "Log dir = $ZEEK_LOG_DIR"
-              zeek -i {{ .Values.zeekEth0.interfaceName }} -C local /etc/zeek/site/custom_logs.zeek &
+              zeek -i {{ .Values.zeekEth0.interfaceName }} -C local /etc/zeek/site/{{ .Values.zeekEth0.zeeConfigName }} &
               sleep 2
               ls -al $ZEEK_LOG_DIR
-              tail -F $ZEEK_LOG_DIR/*.log
 
           resources:
             requests:
@@ -51,10 +50,10 @@ spec:
           volumeMounts:
             - name: zeek-logs
               mountPath: /usr/local/zeek/logs
-              
+
             - name: config-volume
-              mountPath: /etc/zeek/site/custom_logs.zeek
-              subPath: custom_logs.zeek
+              mountPath: /etc/zeek/site/{{ .Values.zeekEth0.zeeConfigName }}
+              subPath: {{ .Values.zeekEth0.zeeConfigName }}
 
       volumes:
         - name: zeek-logs

@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: zeek-config
 data:
-  custom_logs.zeek: |
-    redef Log::default_logdir = "/usr/local/zeek/logs/current";
+  {{ .Values.zeekEth0.zeeConfigName }}: |
+    redef Log::default_logdir = "{{ .Values.zeekEth0.logDir }}/current";

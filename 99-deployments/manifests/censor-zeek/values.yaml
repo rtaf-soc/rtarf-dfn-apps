@@ -2,6 +2,8 @@ zeekEth0:
   enabled: true
   fullnameOverride: zeek-eth0
   interfaceName: eth0 #enp2s0
+  logDir: /usr/local/zeek/logs
+  zeeConfigName: custom_logs.zeek
 
   resources:
     requests:
