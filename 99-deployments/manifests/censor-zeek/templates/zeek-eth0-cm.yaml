@@ -5,3 +5,12 @@ metadata:
 data:
   {{ .Values.zeekEth0.zeeConfigName }}: |
     redef Log::default_logdir = "{{ .Values.zeekEth0.logDir }}/current";
+
+    # ให้ timestamp เป็น ISO8601 (ดีกับ ECS)
+    redef LogAscii::json_timestamps = JSON::TS_ISO8601;
+
+    # ปิด pretty print (เล็กกว่า)
+    redef LogAscii::json_pretty = F;
+
+    # โหลด JSON log policy
+    @load policy/tuning/json-logs
