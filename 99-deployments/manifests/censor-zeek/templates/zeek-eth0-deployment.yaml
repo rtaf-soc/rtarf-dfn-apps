@@ -31,14 +31,7 @@ spec:
             - -c
           args:
             - |
-              echo "=== Interfaces in container ==="
-              ip link
-
-              echo "=== Start Zeek ==="
-              zeek -i {{ .Values.zeekEth0.interfaceName }} local || true
-
-              echo "=== Tail logs ==="
-              tail -f /usr/local/zeek/logs/current/*.log
+              zeek -i {{ .Values.zeekEth0.interfaceName }} && tail -f /usr/local/zeek/logs/current/*.log
 
           resources:
             requests:
