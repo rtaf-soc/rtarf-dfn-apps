@@ -51,8 +51,10 @@ spec:
           volumeMounts:
             - name: zeek-logs
               mountPath: /usr/local/zeek/logs
+              
             - name: config-volume
               mountPath: /etc/zeek/site/custom_logs.zeek
+              subPath: custom_logs.zeek
 
       volumes:
         - name: zeek-logs
