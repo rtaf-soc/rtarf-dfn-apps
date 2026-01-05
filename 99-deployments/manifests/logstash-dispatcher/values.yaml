@@ -95,7 +95,7 @@ logstash-dispatcher-es:
           ecs_compatibility => "v8"
           http_compression => "true"
 
-          index => "censor-events-%{[cust_ts_yyyy]}%{[cust_ts_mm]}%{[cust_ts_dd]}-%{[cust_pod_name_beat]}"
+          index => "censor-events-%{[cust_ts_yyyy]}%{[cust_ts_mm]}%{[cust_ts_dd]}-%{[cust_pod_name_dispatcher]}"
           template_overwrite => "true"
           timeout => "0.5"
         }
