@@ -31,7 +31,7 @@ spec:
             - -c
           args:
             - |
-              zeek -i {{ .Values.zeekEth0.interfaceName }} local && tail -f /usr/local/zeek/logs/current/*.log
+              zeek -i {{ .Values.zeekEth0.interfaceName }} -C -l /usr/local/zeek/logs/current local
 
           resources:
             requests:
