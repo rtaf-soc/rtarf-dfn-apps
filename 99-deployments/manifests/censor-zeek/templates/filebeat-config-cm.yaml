@@ -4,38 +4,17 @@ metadata:
   name: filebeat-config
 data:
   filebeat.yml: |
-    filebeat.inputs:
-      - type: log
-        # อ่าน Zeek logs ทั้งหมดใน current folder
-        paths:
-          - {{ .Values.zeekEth0.logDir }}/current/*.log
-        fields:
-          source: zeek
-        multiline.pattern: '^#'        # Zeek header line
-        multiline.negate: true
-        multiline.match: after
-        processors:
-          # ลบ comment lines (#)
-          - drop_event.when:
-              regexp:
-                message: '^#'
-          # แปลง Zeek TSV fields เป็น key-value
-          - decode_csv_fields:
-              fields:
-                message: message
-              separator: "\t"
-              overwrite_keys: true
-          # แปลง timestamp ถ้ามี field ts
-          - convert:
-              fields:
-                - {from: ts, to: "@timestamp", type: date}
-              ignore_missing: true
-          # เพิ่ม tags / metadata
-          - add_fields:
-              target: ecs
-              fields:
-                type: zeek
-                environment: k8s
+    filebeat.config.modules:
+      path: /usr/share/filebeat/modules.d/*.yml
+      reload.enabled: false
+
+    logging.level: info
+    logging.to_files: true
+    logging.files:
+      path: /var/log/filebeat
+      name: filebeat.log
+      keepfiles: 7
+      permissions: 0644
 
     output.logstash:
       hosts: ["{{ .Values.zeekEth0.logstash.host }}:{{ .Values.zeekEth0.logstash.port }}"]
