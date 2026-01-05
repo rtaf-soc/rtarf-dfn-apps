@@ -1,6 +1,7 @@
 zeekEth0:
   enabled: true
   fullnameOverride: zeek-eth0
+  interfaceName: enp2s0
 
   resources:
     requests:
