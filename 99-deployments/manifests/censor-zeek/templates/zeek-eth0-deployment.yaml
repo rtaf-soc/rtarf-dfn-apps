@@ -31,9 +31,13 @@ spec:
             - -c
           args:
             - |
+              set -e
               export ZEEK_LOG_DIR=/usr/local/zeek/logs/current
               mkdir -p $ZEEK_LOG_DIR
-              zeek -i {{ .Values.zeekEth0.interfaceName }} -C local
+              echo "Log dir = $ZEEK_LOG_DIR"
+              zeek -i {{ .Values.zeekEth0.interfaceName }} -C local &
+              sleep 2
+              ls -al $ZEEK_LOG_DIR
               tail -F $ZEEK_LOG_DIR/*.log
 
           resources:
