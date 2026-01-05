@@ -31,8 +31,10 @@ spec:
             - -c
           args:
             - |
-              zeek -i {{ .Values.zeekEth0.interfaceName }} -C -l /usr/local/zeek/logs/current local &&
-              tail -f /usr/local/zeek/logs/current/*.log
+              export ZEEK_LOG_DIR=/usr/local/zeek/logs/current
+              mkdir -p $ZEEK_LOG_DIR
+              zeek -i {{ .Values.zeekEth0.interfaceName }} -C local
+              tail -F $ZEEK_LOG_DIR/*.log
 
           resources:
             requests:
