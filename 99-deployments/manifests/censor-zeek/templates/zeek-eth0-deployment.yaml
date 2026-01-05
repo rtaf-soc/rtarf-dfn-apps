@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.zeekEth0.fullnameOverride }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zeek
+  template:
+    metadata:
+      labels:
+        app: zeek
+    spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+
+      containers:
+        - name: zeek
+          image: zeek/zeek:8.0.4
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            privileged: true
+          command:
+            - /bin/sh
+            - -c
+          args:
+            - |
+              zeek -i eth0 && tail -f /usr/local/zeek/logs/current/*.log
+
+          resources:
+            requests:
+              cpu: {{ .Values.zeekEth0.resources.requests.cpu }}
+              memory: {{ .Values.zeekEth0.resources.requests.memory }}
+            limits:
+              cpu: {{ .Values.zeekEth0.resources.limits.cpu }}
+              memory: {{ .Values.zeekEth0.resources.limits.memory }}
+
+          volumeMounts:
+            - name: zeek-logs
+              mountPath: /usr/local/zeek/logs
+
+      volumes:
+        - name: zeek-logs
+          emptyDir: {}

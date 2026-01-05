@@ -1,0 +1,11 @@
+zeekEth0:
+  enabled: true
+  fullnameOverride: zeek-eth0
+
+  resources:
+    requests:
+      cpu: "500m"
+      memory: 1Gi
+    limits:
+      cpu: "1"
+      memory: 2Gi
