@@ -28,7 +28,7 @@ spec:
             - "-c"
             - "/usr/share/filebeat/filebeat.yml"
 
-          envs:
+          env:
             - name: DUMMY
               value: "{{ .Values.zeekEth0.dummyVar }}"
 
