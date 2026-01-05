@@ -14,6 +14,5 @@ zeekEth0:
       memory: 2Gi
 
   logstash:
-    host: logstash.example.com
+    host: logstash-beat-receiver.logstash-receiver.svc.cluster.local
     port: 5044
-  
