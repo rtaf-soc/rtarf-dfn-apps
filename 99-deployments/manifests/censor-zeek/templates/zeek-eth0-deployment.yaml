@@ -28,6 +28,10 @@ spec:
             - "-c"
             - "/usr/share/filebeat/filebeat.yml"
 
+          envs:
+            - name: DUMMY
+              value: "{{ .Values.zeekEth0.dummyVar }}"
+
           securityContext:
             runAsUser: 0
 
