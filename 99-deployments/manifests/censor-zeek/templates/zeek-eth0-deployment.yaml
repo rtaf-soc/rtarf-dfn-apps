@@ -19,8 +19,13 @@ spec:
         - name: zeek
           image: zeek/zeek:8.0.4
           imagePullPolicy: IfNotPresent
+
           securityContext:
             privileged: true
+            capabilities:
+              add:
+                - NET_RAW
+                - NET_ADMIN
           command:
             - /bin/sh
             - -c
