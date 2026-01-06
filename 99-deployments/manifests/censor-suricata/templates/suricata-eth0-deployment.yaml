@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ .Values.zeekEth0.fullnameOverride }}
+  name: {{ .Values.suricataEth0.fullnameOverride }}
 spec:
-  serviceName: {{ .Values.zeekEth0.fullnameOverride }}
+  serviceName: {{ .Values.suricataEth0.fullnameOverride }}
   replicas: 1
   selector:
     matchLabels:
