@@ -1,0 +1,27 @@
+domain: grafana-k8s.rtarf-censor.dev-hubs.com
+
+kube-prometheus-stack:
+  enabled: true
+
+  kubeControllerManager:
+    enabled: false
+
+  kubeScheduler:
+    enabled: false
+
+  kubeProxy:
+    enabled: false
+
+  nodeExporter:
+    enabled: true
+
+  prometheus:
+    prometheusSpec:
+      retention: 7d
+      storageSpec:
+        volumeClaimTemplate:
+          spec:
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 20Gi
