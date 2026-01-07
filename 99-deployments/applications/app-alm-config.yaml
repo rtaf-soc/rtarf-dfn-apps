@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: monitoring
+  name: alm-config
 spec:
   generators:
   - clusters:
@@ -10,15 +10,15 @@ spec:
           custom: "true"
   template:
     metadata:
-      name: 'monitoring-{{name}}'
+      name: 'alm-config-{{name}}'
       annotations:
-        argocd.argoproj.io/sync-wave: "0"
+        argocd.argoproj.io/sync-wave: "1"
     spec:
       project: "default"
       source:
         repoURL: https://github.com/rtaf-soc/rtarf-dfn-apps.git
         targetRevision: "{{name}}" #Based on environment
-        path: '99-deployments/manifests/monitoring'
+        path: '99-deployments/manifests/alm-config'
         helm:
           ignoreMissingValueFiles: true
           valueFiles:
@@ -26,7 +26,7 @@ spec:
             - values-{{name}}.yaml
       destination:
         name: in-cluster
-        namespace: monitoring
+        namespace: monitoring #ให้ลงที่เดียวกับ monitoring
       syncPolicy:
         automated:
           selfHeal: true
