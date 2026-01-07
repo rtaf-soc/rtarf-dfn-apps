@@ -20,4 +20,4 @@ spec:
               service:
                 name: monitoring-main-kube-prome-alertmanager
                 port:
-                  number: 8080
+                  number: 9093
