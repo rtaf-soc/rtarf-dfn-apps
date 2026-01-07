@@ -1,4 +1,6 @@
 domain: grafana-k8s.rtarf-censor.dev-hubs.com
+domainProm: prometheus.rtarf-censor.dev-hubs.com
+domainAlm: alm.rtarf-censor.dev-hubs.com
 
 kube-prometheus-stack:
   enabled: true
