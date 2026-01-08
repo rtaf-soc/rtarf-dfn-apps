@@ -21,6 +21,13 @@ sensor:
 
         - name: ARKIME__pcapReadMethod
           value: tpacketv3
+      resources:
+        requests:
+          cpu: 100m
+          memory: 256Mi
+        limits:
+          cpu: 500m
+          memory: 1Gi
 
 env:
   - name: ARKIME__elasticsearch
