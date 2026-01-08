@@ -4,3 +4,35 @@ fullnameOverride: "censor-arkime"
 ingress:
   enabled: false
 
+env:
+  - name: ARKIME__elasticsearch
+    value: "https://es-censor-es-http.elasticsearch.svc.cluster.local:9200"
+
+  # -- user:pass for OpenSearch/Elasticsearch - https://arkime.com/settings#elasticsearchBasicAuth
+  - name: ARKIME__elasticsearchBasicAuth
+    valueFrom:
+      secretKeyRef:
+        name: es-basic-authen
+        key: elasticsearchBasicAuth
+
+  # -- secret string - https://arkime.com/settings#serverSecret
+  - name: ARKIME__serverSecret
+    value: "thisisinternalsecretnoWorry"
+
+  # -- password secret string - https://arkime.com/settings#passwordSecret
+  - name: ARKIME__passwordSecret
+    value: "thisisinternalsecretnoWorry"
+
+  # -- Debug level for applications - https://arkime.com/settings#debug
+  - name: ARKIME__debug
+    value: "0"
+
+  # -- WISE - https://arkime.com/settings#wise
+  - name : ARKIME__plugins
+    value: "wise.so"
+
+  - name : ARKIME__wiseURL
+    value: "http://censor-arkime-wise.censor-arkime.svc.cluster.local:8081"
+
+  - name : ARKIME_centralViewer__plugins
+    value: "wise.js"
