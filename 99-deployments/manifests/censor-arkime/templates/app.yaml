@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: arkime
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/arkime/helm
+    targetRevision: main
+    path: .
+    helm:
+      valueFiles:
+      - values.yaml
+  #destination:
+  #  server: https://kubernetes.default.svc
+  #  namespace: arkime
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

@@ -6,9 +6,9 @@ type: application
 
 version: 0.1.0
 
-dependencies:
-  - name: arkime
-    version: "0.7.0"
-    alias: arkime
-    condition: arkime.enabled
-    repository: "https://arkime.github.io/helm/"
+dependencies: []
+#  - name: arkime
+#    version: "0.7.0"
+#    alias: arkime
+#    condition: arkime.enabled
+#    repository: "https://arkime.github.io/helm/"
