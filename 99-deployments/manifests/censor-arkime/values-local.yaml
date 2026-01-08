@@ -20,7 +20,7 @@ sensor:
           value: "enp2s0" #เปลี่ยนตามเครื่องนั้น ๆ ที่ใช้ดักจับแพ็กเก็ต
 
         - name: ARKIME__pcapReadMethod
-          value: tpacketv3
+          value: pcap
       resources:
         requests:
           cpu: 100m
