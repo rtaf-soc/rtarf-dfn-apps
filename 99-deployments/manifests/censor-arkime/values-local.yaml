@@ -4,14 +4,14 @@ fullnameOverride: "censor-arkime"
 ingress:
   enabled: false
 
-bootstrap:
-  resources:
-    requests:
-      cpu: 200m
-      memory: 512Mi
-    limits:
-      cpu: 500m
-      memory: 1Gi
+#bootstrap:
+#  resources:
+#    requests:
+#      cpu: 200m
+#      memory: 512Mi
+#    limits:
+#      cpu: 500m
+#      memory: 1Gi
 
 env:
   - name: ARKIME__elasticsearch
