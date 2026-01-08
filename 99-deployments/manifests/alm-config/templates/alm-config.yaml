@@ -2,23 +2,53 @@ apiVersion: monitoring.coreos.com/v1alpha1
 kind: AlertmanagerConfig
 metadata:
   name: alerts-webhook-01
+  namespace: monitoring
 spec:
   receivers:
-    - name: discord-notifications
-      webhookConfigs:
-      - url: 'http://discord-alm.discord-alm.svc.cluster.local:9094'
-    - name: null-notifications
+  - name: null-notifications
+
+  - name: discord-notifications
+    webhookConfigs:
+    - url: http://discord-alm.discord-alm.svc.cluster.local:9094
+      sendResolved: true
 
   route:
-    groupBy: [alertname]
-    receiver: discord-notifications   # ✅ default ส่ง
+    receiver: discord-notifications
+    groupBy:
+    - alertname
+    - namespace
     groupWait: 30s
     groupInterval: 5m
     repeatInterval: 4h
 
     routes:
-    - matchers:
+    # ❌ Drop noise alerts
+    - receiver: null-notifications
+      matchers:
       - name: alertname
         matchType: =~
-        value: 'KubeControllerManagerDown|KubeProxyDown|KubeSchedulerDown|NodeClockNotSynchronising|InfoInhibitor|TargetDown'
-      receiver: null-notifications     # ❌ drop เฉพาะที่ไม่อยากได้
+        value: "Watchdog|InfoInhibitor|KubeControllerManagerDown|KubeProxyDown|KubeSchedulerDown|NodeClockNotSynchronising|TargetDown"
+
+  inhibitRules:
+  # critical inhibits warning/info (ทุก namespace)
+  - sourceMatch:
+    - name: severity
+      value: critical
+    targetMatch:
+    - name: severity
+      matchType: =~
+      value: "warning|info"
+    equal:
+    - namespace
+    - alertname
+
+  # warning inhibits info
+  - sourceMatch:
+    - name: severity
+      value: warning
+    targetMatch:
+    - name: severity
+      value: info
+    equal:
+    - namespace
+    - alertname
