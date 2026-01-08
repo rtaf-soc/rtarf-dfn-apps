@@ -4,14 +4,15 @@ fullnameOverride: "censor-arkime"
 ingress:
   enabled: false
 
-#bootstrap:
-#  resources:
-#    requests:
-#      cpu: 200m
-#      memory: 512Mi
-#    limits:
-#      cpu: 500m
-#      memory: 1Gi
+sensor:
+  containers:
+    capture:
+      env:
+        - name: ARKIME__interface
+          value: "enp2s0" #เปลี่ยนตามเครื่องนั้น ๆ ที่ใช้ดักจับแพ็กเก็ต
+
+        - name: ARKIME__pcapReadMethod
+          value: tpacketv3
 
 env:
   - name: ARKIME__elasticsearch
