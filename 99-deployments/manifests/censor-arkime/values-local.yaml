@@ -1,7 +1,6 @@
 ---
 # Copy entire helm chart from https://github.com/arkime/helm
-nameOverride: "censor-arkime-xxx"
-fullnameOverride: "censor-arkime-yyy"
+fullnameOverride: "censor-arkime"
 ingress:
   enabled: false
 
