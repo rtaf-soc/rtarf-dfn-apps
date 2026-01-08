@@ -27,7 +27,7 @@ spec:
       matchers:
       - name: alertname
         matchType: =~
-        value: "Watchdog|InfoInhibitor|KubeControllerManagerDown|KubeProxyDown|KubeSchedulerDown|NodeClockNotSynchronising|TargetDown"
+        value: "InfoInhibitor|KubeControllerManagerDown|KubeProxyDown|KubeSchedulerDown|NodeClockNotSynchronising|TargetDown"
 
   inhibitRules:
   # critical inhibits warning/info (ทุก namespace)
