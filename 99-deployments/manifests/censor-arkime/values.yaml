@@ -1,4 +1,6 @@
 ---
 nameOverride: "censor-arkime-xxx"
 fullnameOverride: "censor-arkime-yyy"
+ingress:
+  enabled: false
 
