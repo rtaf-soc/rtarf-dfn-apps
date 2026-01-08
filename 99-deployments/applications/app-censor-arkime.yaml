@@ -11,7 +11,7 @@ spec:
       targetRevision: main
 
     - repoURL: 'https://github.com/rtaf-soc/rtarf-dfn-apps.git'
-      targetRevision: "{{name}}" #Based on environment
+      targetRevision: "main" #Based on environment
       path: '99-deployments/manifests/censor-arkime'
       helm:
         ignoreMissingValueFiles: true
