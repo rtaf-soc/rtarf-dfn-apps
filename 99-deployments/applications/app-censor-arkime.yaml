@@ -1,33 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+kind: Application
 metadata:
   name: censor-arkime
+  namespace: argocd
 spec:
-  generators:
-  - clusters:
-      selector:
-        matchLabels:
-          custom: "true"
-  template:
-    metadata:
-      name: 'censor-arkime-{{name}}'
-    spec:
-      project: "default"
-      source:
-        repoURL: https://github.com/rtaf-soc/rtarf-dfn-apps.git
-        targetRevision: "{{name}}" #Based on environment
-        path: '99-deployments/manifests/censor-arkime'
-        helm:
-          ignoreMissingValueFiles: true
-          valueFiles:
-            - values.yaml
-            - values-local.yaml
-      destination:
-        name: in-cluster
-        namespace: censor-arkime
-      syncPolicy:
-        automated:
-          selfHeal: true
-          prune: true
-        syncOptions:
-          - CreateNamespace=true
+  project: default
+  source:
+    repoURL: https://github.com/arkime/helm #อ้างตรงจาก repo arkime
+    targetRevision: main
+    path: 99-deployments/manifests/censor-arkime
+    helm:
+      valueFiles:
+      - values.yaml
+      - values-local.yaml
+  destination:
+    name: in-cluster
+    namespace: censor-arkime
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
