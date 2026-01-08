@@ -13,6 +13,7 @@ captureViewerVolumes:
 
 sensor:
   hostNetwork: true
+  dnsPolicy: ClusterFirstWithHostNet
   containers:
     capture:
       env:
