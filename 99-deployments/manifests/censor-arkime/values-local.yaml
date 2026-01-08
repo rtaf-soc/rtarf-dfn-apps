@@ -4,6 +4,13 @@ fullnameOverride: "censor-arkime"
 ingress:
   enabled: false
 
+captureViewerVolumes:
+  volumes:
+    - name: pcap-dir
+      hostPath:
+        path: /data
+        type: DirectoryOrCreate
+
 sensor:
   hostNetwork: true
   containers:
