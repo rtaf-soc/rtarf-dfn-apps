@@ -4,8 +4,11 @@ description: A Helm chart for Arkime
 
 type: application
 
-version: 1.0.0
+version: 0.1.0
 
-appVersion: "1.0"
-
-dependencies: []
+dependencies:
+  - name: arkime
+    version: "0.7.0"
+    alias: arkime
+    condition: arkime.enabled
+    repository: "https://arkime.github.io/helm/"
