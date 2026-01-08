@@ -14,7 +14,7 @@ spec:
       - values.yaml
   destination:
     name: in-cluster
-    namespace: arkime
+    #namespace: arkime
   syncPolicy:
     automated:
       prune: true
