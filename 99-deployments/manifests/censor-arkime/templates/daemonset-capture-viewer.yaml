@@ -65,6 +65,8 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           securityContext:
             runAsNonRoot: false
+            privileged: true
+            allowPrivilegeEscalation: true
             runAsUser: 0
             seccompProfile:
               type: RuntimeDefault
@@ -73,6 +75,7 @@ spec:
                 - ALL
               add:
                 - NET_ADMIN
+                - IPC_LOCK
                 - NET_RAW
           env:
             - name: POD_IP

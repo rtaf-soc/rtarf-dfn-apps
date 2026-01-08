@@ -28,6 +28,7 @@ sensor:
         limits:
           cpu: 500m
           memory: 1Gi
+          hugepages-2Mi: 512Mi
 
 env:
   - name: ARKIME__elasticsearch
