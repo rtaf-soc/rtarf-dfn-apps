@@ -5,6 +5,7 @@ ingress:
   enabled: false
 
 sensor:
+  hostNetwork: true
   containers:
     capture:
       env:
