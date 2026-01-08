@@ -6,16 +6,23 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/arkime/helm #อ้างตรงจาก repo arkime
-    targetRevision: main
-    path: 99-deployments/manifests/censor-arkime
-    helm:
-      valueFiles:
-      - values.yaml
-      - values-local.yaml
+    - repoURL: 'https://github.com/arkime/helm.git'
+      path: .
+      targetRevision: main
+
+    - repoURL: 'https://github.com/rtaf-soc/rtarf-dfn-apps.git'
+      targetRevision: "{{name}}" #Based on environment
+      path: '99-deployments/manifests/censor-arkime'
+      helm:
+        ignoreMissingValueFiles: true
+        valueFiles:
+          - values.yaml
+          - values-local.yaml
+
   destination:
     name: in-cluster
     namespace: censor-arkime
+
   syncPolicy:
     automated:
       prune: true
