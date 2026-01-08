@@ -1,4 +1,3 @@
 ---
-arkime:
-  enabled: false
+nameOverride: "censor-arkime-xxx"
 
