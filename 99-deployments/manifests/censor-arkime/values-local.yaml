@@ -11,7 +11,7 @@ configMap:
   # -- Arkime configuration (config.ini)
   config: |
     [default]
-    maxFileSizeG=100
+    maxFileSizeG=0.1
 
     packetThreads=2
     tpacketv3NumThreads=2
