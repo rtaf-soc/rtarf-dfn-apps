@@ -11,10 +11,12 @@ configMap:
   # -- Arkime configuration (config.ini)
   config: |
     [default]
+    pcapFileTime=10
+    maxFileSizeG=1
+
     packetThreads=2
     tpacketv3NumThreads=2
     diskUtilization=70
-    maxFileSizeG=12
     maxFileAgeDays=7
     freeSpaceG=500
 

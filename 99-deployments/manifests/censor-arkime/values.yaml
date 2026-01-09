@@ -34,6 +34,9 @@ configMap:
 
 # -- Global envs that apply to all pods
 env:
+  - name: DUMMY
+    value: "000"
+
   # -- The OpenSearch/Elasticsearch URL - https://arkime.com/settings#elasticsearch
   - name: ARKIME__elasticsearch
     value: "https://arkime-opensearch:9200"
