@@ -1,5 +1,5 @@
 zeekEth0:
-  enabled: false #ปิดชั่วคราว
+  enabled: true
   fullnameOverride: zeek-eth0
   interfaceName: enp2s0
   logDir: /usr/local/zeek/logs

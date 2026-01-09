@@ -1,5 +1,5 @@
 suricataEth0:
-  enabled: false #ปิดชั่วคราว
+  enabled: true
   fullnameOverride: suricata-eth0
   interfaceName: enp2s0
   logDir: /suricata-logs
