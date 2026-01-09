@@ -49,7 +49,7 @@ sensor:
 
 env:
   - name: DUMMY
-    value: "000"
+    value: "001"
 
   - name: ARKIME__elasticsearch
     value: "https://es-censor-es-http.elasticsearch.svc.cluster.local:9200"
