@@ -48,6 +48,9 @@ sensor:
           #hugepages-2Mi: 512Mi
 
 env:
+  - name: DUMMY
+    value: "000"
+
   - name: ARKIME__elasticsearch
     value: "https://es-censor-es-http.elasticsearch.svc.cluster.local:9200"
 
