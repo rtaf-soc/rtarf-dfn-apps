@@ -11,7 +11,7 @@ configMap:
   # -- Arkime configuration (config.ini)
   config: |
     [default]
-    pcapFileTime=10
+    pcapFileTime=5
     maxFileSizeG=1
 
     packetThreads=2
@@ -24,7 +24,7 @@ captureViewerVolumes:
   volumes:
     - name: pcap-dir
       hostPath:
-        path: /data
+        path: /data/pcap
         type: DirectoryOrCreate
 
 sensor:
