@@ -36,7 +36,7 @@ sensor:
           value: "enp2s0" #เปลี่ยนตามเครื่องนั้น ๆ ที่ใช้ดักจับแพ็กเก็ต
 
         - name: ARKIME__pcapReadMethod
-          value: tpacketv3
+          value: af_packet #tpacketv3
       resources:
         requests:
           cpu: 100m
@@ -48,7 +48,7 @@ sensor:
 
 env:
   - name: DUMMY
-    value: "003"
+    value: "004"
 
   - name: ARKIME__elasticsearch
     value: "https://es-censor-es-http.elasticsearch.svc.cluster.local:9200"
