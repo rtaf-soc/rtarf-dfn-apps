@@ -11,6 +11,7 @@ opencti:
     APP__ADMIN__PASSWORD: SuperSecret123!
     APP__ADMIN__TOKEN : 6f9b2c5e-9c71-4a3c-bcc3-0123456789ac
     APP__BASE_URL: https://opencti.rtarf-censor.dev-hubs.com
+    APP__HEALTH_ACCESS_KEY: "ChangeMe"
     ELASTICSEARCH__URL: https://opensearch-cluster-master:9200
     ELASTICSEARCH__SSL__REJECT_UNAUTHORIZED: 'false'
     ELASTICSEARCH__USERNAME: 'admin'
@@ -26,6 +27,13 @@ opencti:
     MINIO__ACCESS_KEY: minioadmin
     MINIO__SECRET_KEY: supersecretpassword
     MINIO__BUCKET_NAME: opencti
+
+  readinessProbe:
+    enabled: false
+  livenessProbe:
+    enabled: false
+  startupProbe:
+    enabled: false
 
   # --- Disable MinIO ---
   minio:
