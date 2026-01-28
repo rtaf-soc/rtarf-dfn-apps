@@ -5,6 +5,12 @@ opencti:
   enabled: true
   nameOverride: opencti
 
+  worker:
+    envFromSecrets:
+      OPENCTI_TOKEN:
+        name: opencti-secret
+        key: app__admin__token
+
   replicaCount: 1
   envFromSecrets:
     APP__ADMIN__EMAIL:
@@ -16,10 +22,6 @@ opencti:
       key: app__admin__password
 
     APP__ADMIN__TOKEN:
-      name: opencti-secret
-      key: app__admin__token
-
-    OPENCTI_TOKEN:
       name: opencti-secret
       key: app__admin__token
 
