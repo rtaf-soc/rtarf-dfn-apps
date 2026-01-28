@@ -19,6 +19,10 @@ opencti:
       name: opencti-secret
       key: app__admin__token
 
+    OPENCTI_TOKEN:
+      name: opencti-secret
+      key: app__admin__token
+
   env:
     APP__BASE_URL: https://opencti.rtarf-censor.dev-hubs.com
     APP__HEALTH_ACCESS_KEY: "ChangeMe"
