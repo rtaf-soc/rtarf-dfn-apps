@@ -48,3 +48,17 @@ opencti:
       password: opencti
     persistence:
       enabled: false
+
+  opensearch:
+    enabled: true
+
+    extraEnvs:
+      - name: OPENSEARCH_INITIAL_ADMIN_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: opencti-secret
+            key: elasticsearch_password
+
+    persistence:
+      enabled: true
+      size: 20Gi
