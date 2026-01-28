@@ -35,7 +35,7 @@ spec:
         securityContext:
           capabilities:
             add: ["AUDIT_WRITE"]
-        envs:
+        env:
         - name: "DUMMY"
           value: "001"
         envFrom:
