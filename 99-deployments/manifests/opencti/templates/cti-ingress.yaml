@@ -18,6 +18,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: cti-main
+                name: opencti-main-server
                 port:
                   number: 80
