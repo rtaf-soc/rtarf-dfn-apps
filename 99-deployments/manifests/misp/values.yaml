@@ -1,7 +1,7 @@
 domain: misp.rtarf-censor.dev-hubs.com
 
 misp:
-  enabled: false
+  enabled: true
   fullnameOverride: misp
 
 redis:

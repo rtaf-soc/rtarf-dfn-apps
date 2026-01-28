@@ -6,7 +6,7 @@ metadata:
   name: misp-configmap
 data:
   # Database configuration
-  MYSQL_HOST: "misp-development-mariadb"
+  MYSQL_HOST: "misp-main-mariadb"
   MYSQL_PORT: "3306"
   MYSQL_USER: "mispuser"
   MYSQL_DATABASE: "misp"
@@ -16,7 +16,7 @@ data:
   REDIS_PORT: "6379"
   
   # MISP Core configuration
-  BASE_URL: "https://misp.bioinsightlab.org" # If HTTPS set it "https://<domain>"
+  BASE_URL: "https://{{ .Values.domain }}" # If HTTPS set it "https://<domain>"
   CRON_USER_ID: "1"
   CRON_PULLALL: "0 1 * * *"
   CRON_PUSHALL: "0 0 * * *"
