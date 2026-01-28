@@ -49,6 +49,6 @@ data:
   PHP_SESSION_AUTO_REGENERATE: "true"       # Default: false
   PHP_SESSION_CHECK_AGENT: "true"       # Default: false
   PHP_SESSION_COOKIE_SECURE: "true"       # If HTTPS set it "true"
-  PHP_SESSION_COOKIE_SAMESITE: "Lax"
+  PHP_SESSION_COOKIE_SAMESITE: "None" # "Lax"
 
 {{- end }}
