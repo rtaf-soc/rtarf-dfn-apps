@@ -37,8 +37,8 @@ opencti:
 
   opensearch:
     enabled: true
-    plugins:
-      - ingest-attachment
+    #plugins:
+    #  - ingest-attachment
 
     extraEnvs:
       - name: OPENSEARCH_INITIAL_ADMIN_PASSWORD
