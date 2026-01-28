@@ -35,6 +35,9 @@ spec:
         securityContext:
           capabilities:
             add: ["AUDIT_WRITE"]
+        envs:
+        - name: "DUMMY"
+          value: "001"
         envFrom:
         - configMapRef:
             name: misp-configmap
