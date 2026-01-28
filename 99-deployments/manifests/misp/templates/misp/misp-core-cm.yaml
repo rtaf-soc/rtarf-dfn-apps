@@ -21,7 +21,7 @@ data:
   CRON_PULLALL: "0 1 * * *"
   CRON_PUSHALL: "0 0 * * *"
   DISABLE_IPV6: "true"
-  DISABLE_SSL_REDIRECT: "false"      # If HTTPS set it "false"
+  DISABLE_SSL_REDIRECT: "true"      # If HTTPS set it "false"
   ENABLE_DB_SETTINGS: "false"
   ENABLE_BACKGROUND_UPDATES: "true"
   ADMIN_EMAIL: "admin@admin.test"
