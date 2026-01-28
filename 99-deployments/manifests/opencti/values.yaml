@@ -9,6 +9,9 @@ opencti:
   env:
     ELASTICSEARCH__URL: https://opensearch-cluster-master:9200
     ELASTICSEARCH__SSL__REJECT_UNAUTHORIZED: 'false'
+    ELASTICSEARCH__USERNAME: 'admin'
+    ELASTICSEARCH__PASSWORD: 'DuelHdboww0up;23'
+
     RABBITMQ__HOSTNAME: "opencti-main-rabbitmq"
     RABBITMQ__USERNAME: opencti
     RABBITMQ__PASSWORD: opencti
