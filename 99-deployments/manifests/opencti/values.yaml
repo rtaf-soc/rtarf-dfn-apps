@@ -9,6 +9,10 @@ opencti:
   env:
     ELASTICSEARCH__URL: https://opensearch-cluster-master:9200
     NODE_TLS_REJECT_UNAUTHORIZED: "0"
+    RABBITMQ__HOSTNAME: "opencti-main-rabbitmq"
+    RABBITMQ__USERNAME: opencti
+    RABBITMQ__PASSWORD: opencti
+    REDIS__HOSTNAME: opencti-main-redis
 
   # --- Disable MinIO ---
   minio:
