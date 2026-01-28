@@ -21,7 +21,7 @@ data:
   CRON_PULLALL: "0 1 * * *"
   CRON_PUSHALL: "0 0 * * *"
   DISABLE_IPV6: "true"
-  DISABLE_SSL_REDIRECT: "true"      # If HTTPS set it "false"
+  DISABLE_SSL_REDIRECT: "false"      # If HTTPS set it "false"
   ENABLE_DB_SETTINGS: "false"
   ENABLE_BACKGROUND_UPDATES: "true"
   ADMIN_EMAIL: "admin@admin.test"
@@ -49,7 +49,7 @@ data:
   PHP_SESSION_AUTO_REGENERATE: "true"       # Default: false
   PHP_SESSION_CHECK_AGENT: "false"       # Default: false
   PHP_SESSION_COOKIE_SECURE: "true"       # If HTTPS set it "true"
-  PHP_SESSION_COOKIE_SAMESITE: "None" # "Lax"
+  PHP_SESSION_COOKIE_SAMESITE: "Lax"
   #PHP_SESSION_REDIS_HOST: "redis-master"
   #PHP_SESSION_REDIS_PORT: "6379"
   #PHP_SESSION_REDIS_DATABASE: "1"
