@@ -8,33 +8,7 @@ opencti:
   replicaCount: 1
   env:
     ELASTICSEARCH__URL: https://opensearch-cluster-master:9200
-
-  opencti:
-    replicaCount: 1
-    existingSecret: opencti-secret
-    env:
-      ELASTICSEARCH__URL: https://opensearch-cluster-master:9200
-
-    config:
-      # URL ที่ user เปิดเข้า
-      app__base_url: https://opencti.rtarf-censor.dev-hubs.com
-
-      # ---- Elasticsearch (external) ----
-      elasticsearch__ssl__reject_unauthorized: false
-
-      # ---- Redis ----
-      redis__hostname: opencti-redis-master
-      redis__port: 6379
-
-      # ---- RabbitMQ ----
-      rabbitmq__hostname: opencti-rabbitmq
-      rabbitmq__port: 5672
-      rabbitmq__username: opencti
-      rabbitmq__password: opencti
-
-      # ---- Worker tuning (minimal resource) ----
-      workers__concurrency: 1
-      workers__log_level: info
+    NODE_TLS_REJECT_UNAUTHORIZED: "0"
 
   # --- Disable MinIO ---
   minio:
