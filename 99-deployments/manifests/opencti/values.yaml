@@ -5,6 +5,10 @@ opencti:
   enabled: true
   nameOverride: opencti
 
+  replicaCount: 1
+  env:
+    ELASTICSEARCH__URL: https://opensearch-cluster-master:9200
+
   opencti:
     replicaCount: 1
     existingSecret: opencti-secret
