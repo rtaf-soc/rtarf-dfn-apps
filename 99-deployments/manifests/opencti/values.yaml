@@ -9,8 +9,7 @@ opencti:
     replicaCount: 1
     existingSecret: opencti-secret
     env:
-      - name: ELASTICSEARCH__URL
-        value: https://opensearch-cluster-master:9200
+      ELASTICSEARCH__URL: https://opensearch-cluster-master:9200
 
     config:
       # URL ที่ user เปิดเข้า
