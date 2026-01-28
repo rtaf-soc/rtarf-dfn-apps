@@ -5,6 +5,8 @@ kind: ConfigMap
 metadata:
   name: misp-configmap
 data:
+  MISP_CHECK_SEC_FETCH_SITE_HEADER: "false"
+
   # Database configuration
   MYSQL_HOST: "misp-main-mariadb"
   MYSQL_PORT: "3306"
