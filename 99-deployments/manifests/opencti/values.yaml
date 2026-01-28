@@ -8,7 +8,7 @@ opencti:
   replicaCount: 1
   env:
     ELASTICSEARCH__URL: https://opensearch-cluster-master:9200
-    NODE_TLS_REJECT_UNAUTHORIZED: "0"
+    ELASTICSEARCH__SSL__REJECT_UNAUTHORIZED: 'false'
     RABBITMQ__HOSTNAME: "opencti-main-rabbitmq"
     RABBITMQ__USERNAME: opencti
     RABBITMQ__PASSWORD: opencti
