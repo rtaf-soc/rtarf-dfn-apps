@@ -8,13 +8,15 @@ opencti:
   opencti:
     replicaCount: 1
     existingSecret: opencti-secret
+    env:
+      - name: ELASTICSEARCH__URL
+        value: https://opensearch-cluster-master:9200
 
     config:
       # URL ที่ user เปิดเข้า
       app__base_url: https://opencti.rtarf-censor.dev-hubs.com
 
       # ---- Elasticsearch (external) ----
-      elasticsearch__url: https://es-censor-es-http.elasticsearch.svc.cluster.local:9200
       elasticsearch__ssl__reject_unauthorized: false
 
       # ---- Redis ----
