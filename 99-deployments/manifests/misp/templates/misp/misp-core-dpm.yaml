@@ -37,7 +37,7 @@ spec:
             add: ["AUDIT_WRITE"]
         env:
         - name: "DUMMY"
-          value: "002"
+          value: "003"
         envFrom:
         - configMapRef:
             name: misp-configmap
