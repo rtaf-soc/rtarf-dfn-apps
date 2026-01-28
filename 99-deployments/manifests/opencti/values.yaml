@@ -20,7 +20,7 @@ opencti:
 
   # --- Disable MinIO ---
   minio:
-    enabled: false
+    enabled: true
 
   # --- Redis (internal) ---
   redis:
