@@ -35,13 +35,17 @@ opencti:
   startupProbe:
     enabled: false
 
-  # --- Disable MinIO ---
+  # --- MinIO (internal) ---
   minio:
     enabled: true
     rootUser: minioadmin
     rootPassword: supersecretpassword
 
     defaultBuckets: "opencti"
+    persistence:
+      enabled: true
+      size: 20Gi
+      accessMode: ReadWriteOnce
 
   # --- Redis (internal) ---
   redis:
