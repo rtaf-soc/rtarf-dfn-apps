@@ -37,8 +37,9 @@ opencti:
 
   opensearch:
     enabled: true
-    #plugins:
-    #  - ingest-attachment
+    plugins:
+      enabled: true
+      installList: [ 'ingest-attachment' ]
 
     extraEnvs:
       - name: OPENSEARCH_INITIAL_ADMIN_PASSWORD
@@ -46,8 +47,6 @@ opencti:
           secretKeyRef:
             name: opencti-secret
             key: elasticsearch_password
-      - name: OPENSEARCH_PLUGINS
-        value: ingest-attachment
 
     persistence:
       enabled: true
