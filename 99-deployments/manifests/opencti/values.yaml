@@ -27,9 +27,8 @@ opencti:
   # --- Disable MinIO ---
   minio:
     enabled: true
-    auth:
-      rootUser: minioadmin
-      rootPassword: supersecretpassword
+    rootUser: minioadmin
+    rootPassword: supersecretpassword
 
     defaultBuckets: "opencti"
 
