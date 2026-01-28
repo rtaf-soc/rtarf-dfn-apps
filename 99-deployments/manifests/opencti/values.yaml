@@ -6,10 +6,20 @@ opencti:
   nameOverride: opencti
 
   replicaCount: 1
+  envFromSecrets:
+    APP__ADMIN__EMAIL:
+      name: opencti-secret
+      key: app__admin__email
+
+    APP__ADMIN__PASSWORD:
+      name: opencti-secret
+      key: app__admin__password
+
+    APP__ADMIN__TOKEN:
+      name: opencti-secret
+      key: app__admin__token
+
   env:
-    APP__ADMIN__EMAIL: admin@opencti.local
-    APP__ADMIN__PASSWORD: SuperSecret123!
-    APP__ADMIN__TOKEN : 6f9b2c5e-9c71-4a3c-bcc3-0123456789ac
     APP__BASE_URL: https://opencti.rtarf-censor.dev-hubs.com
     APP__HEALTH_ACCESS_KEY: "ChangeMe"
     ELASTICSEARCH__URL: https://opensearch-cluster-master:9200
