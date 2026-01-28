@@ -48,7 +48,3 @@ opencti:
       password: opencti
     persistence:
       enabled: false
-
-  # --- Elasticsearch (disable internal) ---
-  elasticsearch:
-    enabled: false
