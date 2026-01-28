@@ -25,7 +25,7 @@ opencti:
     ELASTICSEARCH__URL: https://opensearch-cluster-master:9200
     ELASTICSEARCH__SSL__REJECT_UNAUTHORIZED: 'false'
     ELASTICSEARCH__USERNAME: 'admin'
-    ELASTICSEARCH__PASSWORD: 'PJskIEk#hsokKE123'
+    ELASTICSEARCH__PASSWORD: 'PJskIEk!hsokKE123'
 
     RABBITMQ__HOSTNAME: "opencti-main-rabbitmq"
     RABBITMQ__USERNAME: opencti
@@ -79,7 +79,7 @@ opencti:
 
     extraEnvs:
       - name: OPENSEARCH_INITIAL_ADMIN_PASSWORD
-        value: "PJskIEk#hsokKE123"
+        value: "PJskIEk!hsokKE123"
 
     persistence:
       enabled: true
