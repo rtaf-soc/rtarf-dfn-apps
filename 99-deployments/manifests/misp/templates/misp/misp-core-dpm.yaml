@@ -22,7 +22,7 @@ spec:
         command: ['sh', '-c', 'until nc -z misp-redis-service 6379; do echo waiting for redis; sleep 2; done;']
       - name: wait-for-db
         image: busybox:latest
-        command: ['sh', '-c', 'until nc -z misp-development-mariadb 3306; do echo waiting for database; sleep 2; done;']
+        command: ['sh', '-c', 'until nc -z misp-main-mariadb 3306; do echo waiting for database; sleep 2; done;']
       - name: wait-for-modules
         image: busybox:latest
         command: ['sh', '-c', 'until nc -z misp-modules-service 6666; do echo waiting for misp-modules; sleep 2; done;']
