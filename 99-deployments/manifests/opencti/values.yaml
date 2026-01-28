@@ -18,9 +18,10 @@ opencti:
     RABBITMQ__PASSWORD: opencti
     REDIS__HOSTNAME: opencti-main-redis
 
-    MINIO_ENDPOINT: http://opencti-main-minio:9000
-    MINIO_ACCESS_KEY: minioadmin
-    MINIO_SECRET_KEY: supersecretpassword
+    MINIO__ENDPOINT: http://opencti-main-minio:9000
+    MINIO__ACCESS_KEY: minioadmin
+    MINIO__SECRET_KEY: supersecretpassword
+    MINIO__BUCKET_NAME: opencti
 
   # --- Disable MinIO ---
   minio:
