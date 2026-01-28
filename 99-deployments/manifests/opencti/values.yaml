@@ -7,6 +7,7 @@ opencti:
 
   replicaCount: 1
   env:
+    APP__BASE_URL: https://opencti.rtarf-censor.dev-hubs.com
     ELASTICSEARCH__URL: https://opensearch-cluster-master:9200
     ELASTICSEARCH__SSL__REJECT_UNAUTHORIZED: 'false'
     ELASTICSEARCH__USERNAME: 'admin'
