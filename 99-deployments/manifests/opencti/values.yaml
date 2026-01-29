@@ -13,7 +13,7 @@ opencti:
       repository: opencti/connector-opencti
       tag: 6.9.9
     env:
-      CONNECTOR_CONFIDENCE_LEVEL: ""
+      CONNECTOR_CONFIDENCE_LEVEL: "80"
       CONNECTOR_ID: "opencti"
       CONNECTOR_UPDATE_EXISTING_DATA: ""
       CONNECTOR_LOG_LEVEL: "info" # Empty use global config
