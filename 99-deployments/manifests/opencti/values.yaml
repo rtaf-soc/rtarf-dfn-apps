@@ -19,7 +19,7 @@ opencti:
       CONNECTOR_LOG_LEVEL: "info" # Empty use global config
       CONFIG_SECTORS_FILE_URL: ""
       CONFIG_GEOGRAPHY_FILE_URL: ""
-      CONFIG_INTERVAL: ""
+      CONFIG_INTERVAL: "3600"
       CONNECTOR_NAME: "OpenCTI"
       CONNECTOR_SCOPE: "marking-definition,identity,location"
       CONNECTOR_TYPE: EXTERNAL_IMPORT
