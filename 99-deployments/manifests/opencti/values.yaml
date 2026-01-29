@@ -9,7 +9,9 @@ opencti:
   - name: opencti        # Required: unique name
     enabled: true        # Enable the connector
     replicas: 1          # Number of pods
-    image: {}
+    image:
+      repository: opencti/connector-opencti
+      tag: 6.9.9
     env:
       CONNECTOR_CONFIDENCE_LEVEL: ""
       CONNECTOR_ID: ""
@@ -25,7 +27,9 @@ opencti:
   - name: mitre          # Required: unique name
     enabled: true        # Enable the connector
     replicas: 1          # Number of pods
-    image: {}
+    image:
+      repository: opencti/connector-mitre
+      tag: 6.9.9
     env:
       MITRE_ENTERPRISE_FILE_URL: ""
       MITRE_PRE_ATTACK_FILE_URL: ""
@@ -42,7 +46,9 @@ opencti:
   - name: misp
     enabled: true
     replicas: 1
-    image: {}
+    image:
+      repository: opencti/connector-misp
+      tag: 6.9.9
     env:
       MISP_URL: ""
       MISP_REFERENCE_URL: ""
