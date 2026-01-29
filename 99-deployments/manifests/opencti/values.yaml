@@ -5,6 +5,12 @@ opencti:
   enabled: true
   nameOverride: opencti
 
+connectors:
+  opencti:
+    enabled: true
+  mitre:
+    enabled: true
+
   worker:
     envFromSecrets:
       OPENCTI_TOKEN:
