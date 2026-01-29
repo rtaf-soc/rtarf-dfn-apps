@@ -6,10 +6,14 @@ opencti:
   nameOverride: opencti
 
   connectors:
-    opencti:
-      enabled: true
-    mitre:
-      enabled: true
+  - name: opencti        # Required: unique name
+    enabled: true        # Enable the connector
+    replicas: 1          # Number of pods
+
+  - name: mitre        # Required: unique name
+    enabled: true        # Enable the connector
+    replicas: 1          # Number of pods
+
 
   worker:
     envFromSecrets:
