@@ -28,6 +28,55 @@ opencti:
         name: opencti-secret
         key: app__admin__token
 
+  - name: mitre
+    enabled: true
+    replicas: 1
+    image:
+      repository: opencti/connector-mitre
+      tag: 6.9.9
+    env:
+      CONNECTOR_ID: "mitre"
+      CONNECTOR_NAME: "MITRE ATT&CK"
+      CONNECTOR_SCOPE: "mitre"
+      CONNECTOR_TYPE: EXTERNAL_IMPORT
+      CONNECTOR_LOG_LEVEL: info
+    envFromSecrets:
+      OPENCTI_TOKEN:
+        name: opencti-secret
+        key: app__admin__token
+  
+  - name: misp
+    enabled: false #ไว้รอมี MISP_URL แล้วค่อยเปิดใช้งาน
+    replicas: 1
+    image:
+      repository: opencti/connector-misp
+      tag: 6.9.9
+    env:
+      MISP_URL: ""
+      MISP_REFERENCE_URL: ""
+      MISP_KEY: ""
+      MISP_SSL_VERIFY: "false"
+      MISP_INTERVAL: "3600"
+      MISP_CREATE_INDICATORS: "true"
+      MISP_CREATE_OBSERVABLES: "true"
+      MISP_CREATE_OBJECT_OBSERVABLES: "true"
+      MISP_CREATE_REPORTS: "true"
+      MISP_IMPORT_WITH_ATTACHMENTS: "false"
+      MISP_IMPORT_ONLY_PUBLISHED: "true"
+      MISP_IMPORT_DISTRIBUTION_LEVELS: "0,1,2"
+      MISP_IMPORT_THREAT_LEVELS: "1,2,3"
+      CONNECTOR_CONFIDENCE_LEVEL: "80"
+      CONNECTOR_ID: "misp"
+      CONNECTOR_UPDATE_EXISTING_DATA: ""
+      CONNECTOR_LOG_LEVEL: "info" # Empty use global config
+      CONNECTOR_NAME: "MISP"
+      CONNECTOR_SCOPE: "misp"
+      CONNECTOR_TYPE: EXTERNAL_IMPORT
+    envFromSecrets:
+      OPENCTI_TOKEN:
+        name: opencti-secret
+        key: app__admin__token
+  
   worker:
     envFromSecrets:
       OPENCTI_TOKEN:
