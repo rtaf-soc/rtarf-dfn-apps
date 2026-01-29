@@ -23,6 +23,10 @@ opencti:
       CONNECTOR_NAME: "OpenCTI"
       CONNECTOR_SCOPE: "marking-definition,identity,location"
       CONNECTOR_TYPE: EXTERNAL_IMPORT
+    envFromSecrets:
+      OPENCTI_TOKEN:
+        name: opencti-secret
+        key: app__admin__token
 
   worker:
     envFromSecrets:
