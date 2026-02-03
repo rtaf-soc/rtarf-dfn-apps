@@ -68,6 +68,16 @@ logstash-transformer:
             path => "/scripts/transformer.rb"
             script_params => {}
           }
+
+          geoip {
+            source => "[source][ip]"
+            target => "[source][geoip]"
+          }
+
+          geoip {
+            source => "[destination][ip]"
+            target => "[destination][geoip]"
+          }
       }
 
       output {
