@@ -80,6 +80,10 @@ def load_cache(orgId, cacheConfigKey)
     end
 end
 
+def is_ip?(ip)
+    !!IPAddr.new(ip) rescue false
+end
+
 def populate_zone(event, from_field_name, to_field_name)
 
     ip = event.get(from_field_name)
@@ -113,8 +117,8 @@ def filter(event)
 
     load_cache('default', 'ip_address_map')
 
-    #populate_zone(event, '[source][ip]', '[source][network_zone]')
-    #populate_zone(event, '[destination][ip]', '[destination][network_zone]')
+    populate_zone(event, '[source][ip]', '[source][network_zone]')
+    populate_zone(event, '[destination][ip]', '[destination][network_zone]')
 
     event.set('cust_ts_done_transformed', Time.now.to_i)
     return [event]
