@@ -8,6 +8,28 @@ require 'ipaddr'
 require 'nokogiri'
 require 'redis'
 
+def connect_redis()
+    redisHost = 'redis-master.redis.svc.cluster.local'
+    begin
+        r = Redis.new(
+          :host => redisHost,
+          :port => 6379,
+        )
+
+        client_ping = r.ping
+        if (client_ping)
+          puts("INFO : Connected to Redis [#{redisHost}]")
+        else
+          raise 'Ping failed!!!'
+        end
+      rescue => e
+        puts("ERROR: #{e}")
+        exit 100
+    end
+
+    return r
+end
+
 def register(params)
     $stdout.sync = true
 
@@ -15,7 +37,7 @@ def register(params)
     @redisObj = connect_redis()
 
     @cacheLoadedConfig = Hash.new()
-    @cacheLoadedConfig['ip_address_map'] = { 'cache_ttl_sec' => 1800, 'last_run_epoch_sec' => 0 }
+    @cacheLoadedConfig['ip_address_map'] = { 'cache_ttl_sec' => 180, 'last_run_epoch_sec' => 0 }
 end
 
 def populate_ts_aggregate(event)
