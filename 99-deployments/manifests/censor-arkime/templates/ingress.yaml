@@ -13,7 +13,8 @@ metadata:
 spec:
   ingressClassName: {{ .Values.ingress.ingressClassName }}
   rules:
-  - http:
+  - host: {{ .Values.ingress.host }}
+    http:
       paths:
         {{- if .Values.cont3xt.enabled }}
         - path: "/cont3xt/"

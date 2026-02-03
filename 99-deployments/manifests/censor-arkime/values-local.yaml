@@ -3,6 +3,7 @@
 fullnameOverride: "censor-arkime"
 ingress:
   enabled: true
+  host: "arkime.rtarf-censor.dev-hubs.com"
   tls:
     - hosts:
       - arkime.rtarf-censor.dev-hubs.com
