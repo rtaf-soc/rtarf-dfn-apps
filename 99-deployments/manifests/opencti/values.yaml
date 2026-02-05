@@ -2,7 +2,7 @@ domain: opencti.rtarf-censor.dev-hubs.com
 
 ### OpenCTI ###
 opencti:
-  enabled: true
+  enabled: false
   nameOverride: opencti
 
   connectors:
