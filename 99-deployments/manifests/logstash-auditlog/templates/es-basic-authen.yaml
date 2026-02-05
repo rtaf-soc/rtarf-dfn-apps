@@ -10,17 +10,13 @@ spec:
   target:
     name: es-basic-authen       # name of the k8s Secret to be created
   data:
-  - secretKey: username
+  - secretKey: ES_USER
     remoteRef:
       key: initial-secret
       property: ES_USER
 
-  - secretKey: password
+  - secretKey: ES_PASSWORD
     remoteRef:
       key: initial-secret
       property: ES_PASSWORD
 
-  - secretKey: roles
-    remoteRef:
-      key: initial-secret
-      property: ES_ROLE
