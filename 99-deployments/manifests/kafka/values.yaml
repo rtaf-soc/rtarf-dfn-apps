@@ -24,10 +24,10 @@ kafka:
   zookeeper:
     enabled: false
 
-  replicaCount: 1
+  replicaCount: 2
 
   controller:
-    replicaCount: 1
+    replicaCount: 2
 
   listeners:
     client:
