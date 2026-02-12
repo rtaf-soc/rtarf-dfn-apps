@@ -30,6 +30,7 @@ logstash-beat-receiver:
   logstashConfig:
     logstash.yml: |
       http.host: "0.0.0.0"
+      http.port: 9600
       pipeline.ecs_compatibility: "disabled"
 
   extraVolumeMounts:
@@ -50,6 +51,20 @@ logstash-beat-receiver:
       targetPort: 5044
       nodePort: 30044
       name: beat-tcp
+
+    - port: 9198
+      protocol: TCP
+      targetPort: 9198
+      name: metrics
+
+  extraContainers:
+    - name: logstash-exporter
+      image: bonniernews/logstash_exporter:latest
+      args:
+        - "--logstash.endpoint=http://localhost:9600"
+      ports:
+        - name: metrics
+          containerPort: 9198
 
   logstashPipeline:
     logstash.conf: |
