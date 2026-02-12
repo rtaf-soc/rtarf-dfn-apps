@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: logstash-beat-receiver
+  namespace: monitoring   # namespace ที่ Prometheus อยู่
+spec:
+  namespaceSelector:
+    matchNames:
+      - logstash-receiver
+
+  selector:
+    matchLabels:
+      app: logstash-beat-receiver
+
+  endpoints:
+    - port: metrics
+      path: /metrics
+      interval: 15s
