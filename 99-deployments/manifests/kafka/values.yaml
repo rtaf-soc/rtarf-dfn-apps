@@ -19,8 +19,17 @@ kafka:
   autoCreateTopicsEnable: true
 
   metrics:
-    kafka:
+    jmx:
       enabled: true
+      containerPorts:
+        metrics: 5556
+
+    service:
+      ports:
+        metrics: 5556
+
+    serviceMonitor:
+      enabled: false   # จัดการเอง
 
   kraft:
     enabled: true
