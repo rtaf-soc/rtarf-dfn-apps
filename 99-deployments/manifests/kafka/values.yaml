@@ -18,6 +18,10 @@ kafka:
   fullnameOverride: kafka
   autoCreateTopicsEnable: true
 
+  metrics:
+    kafka:
+      enabled: true
+
   kraft:
     enabled: true
 
