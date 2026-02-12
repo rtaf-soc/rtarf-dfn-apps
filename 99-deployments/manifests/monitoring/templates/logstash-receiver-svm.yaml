@@ -2,7 +2,6 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: logstash-beat-receiver
-  namespace: monitoring   # namespace ที่ Prometheus อยู่
 spec:
   namespaceSelector:
     matchNames:
