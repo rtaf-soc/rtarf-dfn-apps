@@ -23,6 +23,8 @@ kafka:
       enabled: true
       containerPorts:
         metrics: 5556
+      image:
+        repository: bitnamilegacy/jmx-exporter
 
     service:
       ports:
