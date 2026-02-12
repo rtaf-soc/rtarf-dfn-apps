@@ -3,7 +3,7 @@ kind: ServiceMonitor
 metadata:
   name: logstash-beat-receiver
   labels:
-      release: kube-prometheus-crds  # เพื่อให้ Prometheus มองเห็น
+    release: kube-prometheus-crds  # เพื่อให้ Prometheus มองเห็น
 spec:
   namespaceSelector:
     matchNames:
