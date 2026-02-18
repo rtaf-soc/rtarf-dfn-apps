@@ -4,7 +4,7 @@ suricataEth0:
   interfaceName: enp2s0
   logDir: /suricata-logs
   suricataConfigName: suricata.yaml
-  dummyVar: "000"
+  dummyVar: "001"
 
   resources:
     requests:
