@@ -30,7 +30,8 @@ spec:
               memory: 1Gi
               cpu: 2
             limits:
-              memory: 2Gi
+              memory: 4Gi
+              cpu: 4
     config:
       node.store.allow_mmap: true
       node.roles: ["master"]
@@ -63,10 +64,10 @@ spec:
           resources:
             requests:
               memory: 1Gi
-              cpu: 1
-            limits:
-              memory: 2Gi
               cpu: 2
+            limits:
+              memory: 4Gi
+              cpu: 4
     config:
       node.store.allow_mmap: true
       node.roles: ["data_warm", "ingest"]
@@ -101,8 +102,8 @@ spec:
               memory: 1Gi
               cpu: 1
             limits:
-              memory: 2Gi
-              cpu: 2
+              memory: 4Gi
+              cpu: 4
     config:
       node.store.allow_mmap: true
       node.roles: ["data_cold", "ingest"]
@@ -136,7 +137,7 @@ spec:
               memory: 1Gi
               cpu: 1
             limits:
-              memory: 2Gi
+              memory: 4Gi
               cpu: 2
     config:
       node.store.allow_mmap: true
