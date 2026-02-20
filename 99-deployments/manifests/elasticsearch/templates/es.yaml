@@ -28,7 +28,7 @@ spec:
           resources:
             requests:
               memory: 1Gi
-              cpu: 2
+              cpu: 3
             limits:
               memory: 4Gi
               cpu: 4
@@ -45,77 +45,6 @@ spec:
           requests:
             storage: 200Gi
         #storageClassName: longhorn
-
-  - name: warm
-    count: 1
-    podTemplate:
-      spec:
-        initContainers:
-        - name: sysctl
-          securityContext:
-            privileged: true
-            runAsUser: 0
-          command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
-        containers:
-        - name: elasticsearch
-          #env:
-          #- name: ES_JAVA_OPTS
-          #  value: -Xms8g -Xmx8g
-          resources:
-            requests:
-              memory: 1Gi
-              cpu: 2
-            limits:
-              memory: 4Gi
-              cpu: 4
-    config:
-      node.store.allow_mmap: true
-      node.roles: ["data_warm", "ingest"]
-    volumeClaimTemplates:
-    - metadata:
-        name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
-      spec:
-        accessModes:
-        - ReadWriteOnce
-        resources:
-          requests:
-            storage: 200Gi
-
-
-  - name: cold
-    count: 1
-    podTemplate:
-      spec:
-        initContainers:
-        - name: sysctl
-          securityContext:
-            privileged: true
-            runAsUser: 0
-          command: ['sh', '-c', 'sysctl -w vm.max_map_count=562144']
-        containers:
-        - name: elasticsearch
-          #env:
-          #- name: ES_JAVA_OPTS
-          #  value: -Xms8g -Xmx8g
-          resources:
-            requests:
-              memory: 1Gi
-              cpu: 1
-            limits:
-              memory: 4Gi
-              cpu: 4
-    config:
-      node.store.allow_mmap: true
-      node.roles: ["data_cold", "ingest"]
-    volumeClaimTemplates:
-    - metadata:
-        name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
-      spec:
-        accessModes:
-        - ReadWriteOnce
-        resources:
-          requests:
-            storage: 300Gi
 
   - name: data
     count: 1
@@ -138,10 +67,10 @@ spec:
               cpu: 1
             limits:
               memory: 4Gi
-              cpu: 2
+              cpu: 4
     config:
       node.store.allow_mmap: true
-      node.roles: ["data", "ingest"]
+      node.roles: ["data", "data_warm", "data_cold", "ingest"]
     volumeClaimTemplates:
     - metadata:
         name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
@@ -150,7 +79,7 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 200Gi
+            storage: 600Gi
   auth:
     fileRealm:
     - secretName: es-basic-authen
