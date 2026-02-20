@@ -5,7 +5,7 @@ metadata:
   name: es-censor
 spec:
   version: 8.18.8
-  image: asia-southeast1-docker.pkg.dev/its-artifact-commons/utils/elasticsearch:v8.18.8_1
+  #image: asia-southeast1-docker.pkg.dev/its-artifact-commons/utils/elasticsearch:v8.18.8_1
 
   secureSettings:
     - secretName: s3-secret
