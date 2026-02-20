@@ -8,7 +8,7 @@ spec:
   #image: asia-southeast1-docker.pkg.dev/its-artifact-commons/utils/elasticsearch:v8.18.8_1
 
   secureSettings:
-    - secretName: s3-secret
+    - secretName: gcs-credentials
   nodeSets:
   - name: masters
     count: 1
