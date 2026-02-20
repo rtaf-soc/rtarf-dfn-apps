@@ -27,7 +27,7 @@ logstash-transformer:
       value: "-Xmx256m -Xms256m"
 
     - name: DUMMY
-      value: "003"
+      value: "004"
 
     - name: POD_NAME
       valueFrom:
@@ -79,14 +79,18 @@ logstash-transformer:
             script_params => {}
           }
 
-          geoip {
-            source => "[source][ip]"
-            target => "[source][geoip]"
+          if [network][direction] == "outbound" {
+            geoip {
+              source => "[destination][ip]"
+              target => "[destination][geoip]"
+            }
           }
 
-          geoip {
-            source => "[destination][ip]"
-            target => "[destination][geoip]"
+          if [network][direction] == "external" {
+            geoip {
+              source => "[source][ip]"
+              target => "[source][geoip]"
+            }
           }
       }
 
