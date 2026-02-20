@@ -5,6 +5,8 @@ metadata:
   name: es-censor
 spec:
   version: 8.18.8
+  secureSettings:
+    - secretName: s3-secret
   nodeSets:
   - name: masters
     count: 1
