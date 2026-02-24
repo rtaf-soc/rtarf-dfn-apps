@@ -22,6 +22,7 @@ spec:
           valueFiles:
             - values.yaml
             - values-{{name}}.yaml
+            - values-local.yaml
       destination:
         name: in-cluster
         namespace: keycloak
